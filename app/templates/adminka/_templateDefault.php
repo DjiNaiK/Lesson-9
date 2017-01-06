@@ -5,7 +5,11 @@
     <?php if(isset($this->data['refreshURL'])) { ?>
         <meta http-equiv="Refresh" content="5; url=<?php echo $this->data['refreshURL']; ?>" />
     <? } ?>
-    <title><?php echo  $this->data['title']; ?></title>
+    <title>
+        <?php if(isset($this->data['refreshURL'])) {
+            echo  $this->data['title'];
+        } ?>
+    </title>
 </head>
 <body>
 
