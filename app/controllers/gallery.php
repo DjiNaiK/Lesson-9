@@ -1,5 +1,5 @@
 <?php
+$getGallery = new \app\classes\models\Gallery();
 $view
-    ->assign('title', 'Галерея нашего города!');
-    ->assign('gallery',
-        $db->query('SELECT * FROM gallery',[]));
+    ->assign('title', 'Галерея нашего города!')
+    ->assign('gallery', $getGallery->getAllGallery());

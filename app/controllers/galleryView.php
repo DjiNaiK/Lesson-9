@@ -1,12 +1,11 @@
 <?php
 $imgID = $_GET['n'] ?? 1;
+$getGallery = new \app\classes\models\Gallery();
 
 $view
-    ->assign('img',
-        $db->query('SELECT * FROM gallery WHERE id='.$imgID,[]))
-    ->assign('imgPrev',
-        $db->query('SELECT id FROM gallery WHERE id='.($imgID-1),[]))
-    ->assign('imgNext',
-        $db->query('SELECT id FROM gallery WHERE id='.($imgID+1),[]));
+    ->assign('img', $getGallery->getPhoto($imgID))
+    ->assign('imgPrev', $getGallery->getPhoto($imgID-1))
+    ->assign('imgNext', $getGallery->getPhoto($imgID+1));
+
 //imgPrev: проверяем а есть ли пред.фотография?
 //imgNext: проверяем а есть ли след.фотография?
