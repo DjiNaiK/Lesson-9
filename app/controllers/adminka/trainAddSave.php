@@ -1,12 +1,11 @@
 <?php
-$addRecord = $db->execute('
-INSERT INTO trains(dateStart, dateFinish, finishCity) VALUES 
-("'.$_POST['dateStart'].'", "'.$_POST['dateFinish'].'", "'.$_POST['finishCity'].'")');
+$newVar['dateStart'] = $_POST['dateStart'];
+$newVar['dateFinish'] = $_POST['dateFinish'];
+$newVar['finishCity'] = $_POST['finishCity'];
 
-if ($addRecord == True){
+$Trains = new \app\classes\models\Trains();
+$Trains->addTrain($newVar);
+
     $view
         ->assign('title', 'Запись добавлена')
         ->assign('refreshURL', 'index.php?adminPIN=42&do=trains');
-} else {
-    exit;
-}

@@ -1,12 +1,10 @@
 <?php
-$updateRecord = $db->execute('UPDATE pageContent SET text="'.$_POST['text'].'" WHERE contentName = "index"');
+$varUpdate['name'] = 'index';
+$varUpdate['text'] = $_POST['text'];
 
-if ($updateRecord == True){
+$Content = new \app\classes\models\Content();
+$Content->updateContent($varUpdate);
+
     $view
         ->assign('title', 'Изменения внесены')
         ->assign('refreshURL', 'index.php?adminPIN=42&do=adminka');
-} else {
-    exit;
-}
-
-

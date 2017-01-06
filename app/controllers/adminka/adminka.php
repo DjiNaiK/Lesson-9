@@ -1,5 +1,6 @@
 <?php
+$Content = new \app\classes\models\Content();
+
 $view
     ->assign('title', 'Редактирование приветствие')
-    ->assign('content',
-    $db->query('SELECT text FROM pageContent WHERE contentName="index"',[]));
+    ->assign('content', $Content->getContentByName('index'));
